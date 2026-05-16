@@ -1,0 +1,305 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .shimmer-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+        .shimmer-btn:hover::after {
+            left: 100%;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#f3f7ff",
+                        "on-tertiary-fixed": "#001f24",
+                        "on-secondary-fixed": "#070a61",
+                        "tertiary-fixed": "#9feffe",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eceef0",
+                        "surface-variant": "#e0e3e5",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-low": "#f2f4f6",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#363b89",
+                        "on-primary-fixed-variant": "#004b74",
+                        "secondary-fixed": "#e0e0ff",
+                        "inverse-primary": "#94ccff",
+                        "background": "#f7f9fb",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-fixed": "#cde5ff",
+                        "primary": "#005d90",
+                        "tertiary": "#00626f",
+                        "secondary": "#5157a6",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#a4a9ff",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed-dim": "#83d3e1",
+                        "on-tertiary-container": "#e7fbff",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d8dadc",
+                        "outline": "#707881",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#393e8c",
+                        "tertiary-container": "#227c8a",
+                        "surface": "#f7f9fb",
+                        "outline-variant": "#bfc7d1",
+                        "surface-tint": "#006399",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "on-surface-variant": "#404850",
+                        "surface-container-high": "#e6e8ea",
+                        "on-surface": "#191c1e",
+                        "primary-container": "#0077b6",
+                        "primary-fixed-dim": "#94ccff",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#bfc2ff",
+                        "on-background": "#191c1e",
+                        "on-tertiary-fixed-variant": "#004f59",
+                        "on-primary-fixed": "#001d32"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "stack-md": "32px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "stack-lg": "80px",
+                        "stack-sm": "16px",
+                        "base": "8px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-xl-mobile": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Manrope"],
+                        "headline-xl": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-xl-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style data-stitch-cursor=""></style><style data-stitch-scroll-lock=""></style></head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl border-b border-white/20 shadow-sm flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-primary transition-transform active:scale-95">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-headline-md text-headline-md tracking-[0.2em] text-primary">ASAQUA</span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-primary font-bold transition-opacity hover:opacity-80" href="#">The Collection</a>
+<a class="text-on-surface-variant transition-opacity hover:opacity-80" href="#">Our Source</a>
+<a class="text-on-surface-variant transition-opacity hover:opacity-80" href="#">Sustainability</a>
+<a class="text-on-surface-variant transition-opacity hover:opacity-80" href="#">Wellness Journal</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-primary transition-transform active:scale-95">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-16">
+<div class="absolute inset-0 z-0 overflow-hidden">
+<img class="w-full h-full object-cover opacity-30" data-alt="A tranquil, high-key wide shot of crystal clear water ripples in a premium light-mode aesthetic. The lighting is soft and environmental, creating a serene and refreshing atmosphere that mimics the transparency of Arctic mist. The surface of the water catches light highlights, creating a glass-like texture that feels luxurious and pure." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNJJPGwo_1OMmlAccbUQaoJT94ftsNtqQfWkkpzu5PA47U8_bFstyTyhCib787FwziFnBwVhBp4f5UT6hyrOERItbDhpv-OD8Ch12az_xcRfvP_R7hHZc-75A3OIH7kLejlzZyCP6umFJ5VNvOh1Rv3QiAWWEQ5WcAesdaA3tgXXHb_5DsKDFxQVvjnwp7jTPzoTT-jOJOf5vDD5KfWoz-oicGJ3cq6fk_nBTXHQNG_4ylelWr-D28lQEgDNI0hmjoB8CO9zzPMuDX">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background"></div>
+</div>
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop z-10 grid md:grid-cols-2 gap-stack-lg items-center">
+<div class="order-2 md:order-1 flex flex-col space-y-stack-sm max-w-xl">
+<div class="inline-flex items-center px-4 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 w-fit">
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Elemental Purity</span>
+</div>
+<h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface">Purity Defined by Nature.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Experience hydration in its most elemental form. Sourced from ancient glaciers, delivered in medical-grade glass for an uncompromising taste of clarity.</p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="shimmer-btn text-on-primary px-10 py-4 font-bold transition-transform active:scale-95 rounded-full bg-emerald-600">Shop Collection</button>
+<button class="glass-panel text-primary px-10 py-4 rounded-xl border border-white/40 font-bold transition-transform active:scale-95">about</button>
+</div>
+</div>
+<div class="order-1 md:order-2 flex justify-center relative">
+<div class="absolute inset-0 bg-primary/5 rounded-full blur-3xl -z-10 scale-125 animate-pulse"></div>
+<img class="max-h-[716px] drop-shadow-2xl hover:scale-105 transition-transform duration-700 cursor-pointer" data-alt="A premium glass water bottle captured in a stunning high-speed action shot with an elegant water splash encircling it. The lighting is crisp and cool, highlighting the clarity and condensation on the bottle's surface. The background is a soft, deep ocean blue gradient, reinforcing the brand's association with elemental purity and premium hydration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuKrYsNTnA9bFHQN7bLTh1ER55M6C4GEqk6pd-zy7ej2O8f_Y3VwkXUfprSAodHHwSAkcg8782IMCKl6t3QBLWURVnrdAPSBULlci6rMOsqF9gSaCMuATBJP77hrbNETAsz5tbA1bh3M45Z8SBHuwQl6dzf_9GYzItWUF4KevzxtzCq5M7zylBuleA2Li_wVxKzMsDmUJQw4AtX04tcTMPLkzbxTG7l5Z2B1kL6aoeYJ2izSQm5liqO0oVFQkaw6WGIqPo2Y2XtzWf">
+</div>
+</div>
+</section>
+<!-- Collection Showcase (Bento Style) -->
+<section class="py-stack-lg container mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center max-w-2xl mx-auto mb-stack-lg space-y-4">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">The Collection</h2>
+<p class="text-on-surface-variant">Curated for every moment of your wellness journey. Choose between the stillness of the glacier or the vibrancy of the spring.</p>
+</div>
+<div class="grid md:grid-cols-12 gap-gutter">
+<!-- Still Collection -->
+<div class="md:col-span-7 glass-panel rounded-xl overflow-hidden group">
+<div class="relative h-[400px] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A minimalist and high-end close-up of a Still water collection. The image features several sleek glass bottles arranged artfully on a pristine marble surface under bright, natural daylight. The mood is calm and sophisticated, with soft shadows and a light-mode aesthetic that emphasizes the brand's core value of transparency and luxury wellness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkqNWNnPhQd-woIX50XmStT6GEQUnIYlZhpgeVcyk_O06YZdT4d4pw9MdZa8et-3f9Vd3lLLX_AoWL0rjp-vWo9p6EQwunb_8AZcetXHCdbjDOjyC8utVD4iAL_grnHO-kiM8BZbpmCowzYiuof3az3KJa4ERtFAJiF-h9y11TdQaALCIJwM8cRbuvnFehZ0_ZqRs1NOo6hY672qYGyCLrDZbk2jUIHkxhU4aPBDM5-WcbXeke4QhEkZUQnvR6kCzLm2CBQ7M7P4E4">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-8 left-8 text-white">
+<span class="font-label-sm text-label-sm">Essential</span>
+<h3 class="font-headline-md text-headline-md">The Still Series</h3>
+</div>
+</div>
+<div class="p-8 flex justify-between items-center">
+<p class="text-on-surface-variant max-w-sm">PH balanced and mineral-rich, designed for daily restoration.</p>
+<button class="text-primary flex items-center gap-2 font-bold group-hover:translate-x-2 transition-transform">
+                        Explore <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Sparkling Collection -->
+<div class="md:col-span-5 glass-panel rounded-xl overflow-hidden group">
+<div class="relative h-[400px] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A dynamic macro shot of sparkling water bubbles rising in a fine glass container. The lighting is vibrant and high-key, with prismatic light refractions creating a sense of energy and refreshment. The aesthetic is clean and modern, perfectly capturing the effervescence and luxury quality of the sparkling collection against a soft blue gradient background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXcE-svvgGW_FA1Yw53LezkGgEUy4Vqmm6fxDvn0SVJ7-a9XjzrGcXpbMN4i5gonGgaKIqDG10ivjknflUp2kmTOlovjb_avmia_VkXbhM95T9YEx19tM6d8RD6vatUfbDP2xFVuNkAgbX_KZsV_uZ6oGhTiovC9_0cxS4AC_m7_1nyjJCymK-KKMGjUznC3JOPtGOwXs2aeOgil5xPQLC3hy53BtgBbh1xp8_MvJFRVDJG6xiR6ad349ucL6wucfFCIX0s5FhUR8s">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-8 left-8 text-white">
+<span class="font-label-sm text-label-sm">Effervescent</span>
+<h3 class="font-headline-md text-headline-md">The Sparkling Series</h3>
+</div>
+</div>
+<div class="p-8">
+<p class="text-on-surface-variant mb-4">Fine-bead carbonation for a crisp, elevated palate experience.</p>
+<button class="text-primary flex items-center gap-2 font-bold group-hover:translate-x-2 transition-transform">
+                        Explore <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Mission & Sustainability -->
+<section class="bg-surface-container-low py-stack-lg relative overflow-hidden">
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop grid md:grid-cols-2 gap-stack-lg items-center">
+<div class="relative rounded-xl overflow-hidden h-[600px] order-2 md:order-1">
+<img class="w-full h-full object-cover" data-alt="A breath-taking aerial view of a majestic glacier meeting a deep blue ocean under a clear, bright sky. The image conveys vastness, purity, and environmental preservation. The lighting is crisp and cold, emphasizing the pristine white of the ice and the deep crystal blue of the water, reflecting the brand's commitment to sustainability and nature." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHG0se__KPMM0_yLMWY4lvu4NE56_Y6LyneJGDB1GdjmUBtRqH3XkuLsPWC60Mv1q4ocZg4lZraDgK8hu9XZhSAtV-Z7s-vYjJ0RCCKw3B1vehNMVw4eC16c3HFAnWc0Ph-f9rPJY9MLg4DhFgiPx1B-z-4qTlSLCxyJCBDIS1SoZA9iu-6jO2IIedi7RJN9ZKt3sKxP7k1m8g8UxJCURyHAJhfPtu1ux5nQ4xcyY9VIprAiTNLubCzbczjTw0AXcNOM_b2fxhOfYi">
+<div class="absolute inset-0 ring-1 ring-white/20 inset-4 rounded-lg"></div>
+</div>
+<div class="space-y-stack-sm order-1 md:order-2">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-[0.2em]">Our Commitment</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Purity with Purpose.</h2>
+<p class="text-on-surface-variant font-body-lg">We believe that luxury shouldn't cost the earth. ASAQUA is committed to a circular ecosystem, from source preservation to carbon-neutral shipping.</p>
+<div class="space-y-6 pt-6">
+<div class="flex items-start gap-4 p-6 glass-panel rounded-xl border border-white/40">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-3 rounded-full" data-icon="eco">eco</span>
+<div>
+<h4 class="font-bold text-on-surface">Plastic-Free Forever</h4>
+<p class="text-on-surface-variant text-sm">We use 100% infinitely recyclable medical-grade glass and aluminum.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-6 glass-panel rounded-xl border border-white/40">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-3 rounded-full" data-icon="water_drop">water_drop</span>
+<div>
+<h4 class="font-bold text-on-surface">Regenerative Sourcing</h4>
+<p class="text-on-surface-variant text-sm">We only bottle 1% of the annual overflow to ensure source health.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="py-stack-lg container mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid md:grid-cols-3 gap-gutter">
+<div class="p-8 glass-panel rounded-xl text-center space-y-4 hover:-translate-y-2 transition-transform duration-500">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="biotech">biotech</span>
+<h3 class="font-headline-md text-headline-md">Medical Grade</h3>
+<p class="text-on-surface-variant">Borosilicate glass ensures zero leaching and absolute flavor neutrality for the purest taste possible.</p>
+</div>
+<div class="p-8 glass-panel rounded-xl text-center space-y-4 hover:-translate-y-2 transition-transform duration-500">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="thermostat">thermostat</span>
+<h3 class="font-headline-md text-headline-md">Alkaline Optimized</h3>
+<p class="text-on-surface-variant">Naturally occurring minerals maintain a perfect 7.8 pH balance to support your body's equilibrium.</p>
+</div>
+<div class="p-8 glass-panel rounded-xl text-center space-y-4 hover:-translate-y-2 transition-transform duration-500">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="verified">verified</span>
+<h3 class="font-headline-md text-headline-md">Triple Certified</h3>
+<p class="text-on-surface-variant">Exceeding international standards for purity, sustainability, and ethical business practices.</p>
+</div>
+</div>
+</section>
+<!-- Newsletter CTA -->
+<section class="py-stack-lg px-margin-mobile">
+<div class="container mx-auto max-w-4xl glass-panel p-12 rounded-2xl text-center relative overflow-hidden">
+<div class="absolute -top-24 -left-24 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-24 -right-24 w-64 h-64 bg-tertiary/10 rounded-full blur-3xl"></div>
+<div class="relative z-10 space-y-6">
+<h2 class="font-headline-lg text-headline-lg">Stay in the Flow</h2>
+<p class="text-on-surface-variant max-w-lg mx-auto">Join our Wellness Journal for exclusive insights on hydration, sustainability, and new product drops.</p>
+<form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto pt-4">
+<input class="flex-grow bg-white/50 border-b-2 border-outline-variant focus:border-primary outline-none px-4 py-3 transition-colors rounded-lg md:rounded-none" placeholder="Email address" type="email">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-xl font-bold transition-transform active:scale-95">Login</button>
+</form>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant/30 py-stack-md">
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop flex flex-col items-center text-center space-y-8">
+<span class="font-headline-md text-headline-md tracking-widest text-primary">ASAQUA</span>
+<div class="flex flex-wrap justify-center gap-8 font-body-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Terms</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Stockists</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="public">public</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</a>
+</div>
+<p class="text-secondary text-sm">© 2024 ASAQUA. Purity in every drop.</p>
+</div>
+</footer>
+
+
+</body></html>
